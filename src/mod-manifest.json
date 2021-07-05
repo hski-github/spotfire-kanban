@@ -1,0 +1,41 @@
+{
+    "apiVersion": "1.1",
+    "version": "0.1",
+    "name": "Kanban Board",
+    "id": "spotfire-kanban-hski",
+    "icon": "icon.svg",
+    "dataViewDefinition": {
+        "colorAxis": {
+            "mode": "dual",
+            "dropTarget": {
+                "icon": "Color",
+                "description": "Color tile by {0}"
+            }
+        },
+        "axes": [
+            {
+                "name": "Column",
+                "mode": "categorical",
+                "placement": "top",
+                "dropTarget": {
+                    "icon": "Column",
+                    "description": "Use {0} as columns for Kanban board"
+                }
+            },
+            {
+                "name": "Tile",
+                "mode": "categorical",
+                "placement": "bottom",
+                "dropTarget": {
+                    "icon": "Tile",
+                    "description": "Use {0} as tile label for Kanban board"
+                }
+            }
+        ]
+    },
+    "files": [
+        "index.html",
+        "main.css",
+        "main.js"
+    ]
+}
