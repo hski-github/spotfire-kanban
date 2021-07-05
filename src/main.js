@@ -40,10 +40,10 @@ Spotfire.initialize(async (mod) => {
         /**
          * Get the hierarchy of the categorical X-axis.
          */
-        const xHierarchy = await dataView.hierarchy("Column");
-        const xRoot = await xHierarchy.root();
+        const colHierarchy = await dataView.hierarchy("Column");
+        const colRoot = await colHierarchy.root();
 
-        if (xRoot == null) {
+        if (colRoot == null) {
             // User interaction caused the data view to expire.
             // Don't clear the mod content here to avoid flickering.
             return;
@@ -54,9 +54,18 @@ Spotfire.initialize(async (mod) => {
          */
         const container = document.querySelector("#mod-container");
         container.textContent = `windowSize: ${windowSize.width}x${windowSize.height}\r\n`;
-        container.textContent += `should render: ${xRoot.rows().length} rows\r\n`;
-        container.textContent += `${prop.name}: ${prop.value()}`;
+        container.textContent += `number of column levels: ${colHierarchy.levels.length} level(s)\r\n`;
+        container.textContent += `number of children of root: ${colRoot.children.length} child(ren)\r\n`;
+        container.textContent += `number of leaves of root: ${colRoot.leaves().length} leave(s)\r\n`;
+        container.textContent += `should render: ${colRoot.rows().length} rows\r\n`;
 
+		colRoot.children.forEach(function(childnode, i){
+	        container.textContent += childnode.formattedValue() + ' with ' + childnode.leafCount() + ` leaves and ` + childnode.rowCount() + ` rows\r\n`;
+			childnode.rows().forEach(function(row, j){
+				container.textContent += row.categorical("Tile").formattedValue() + `\r\n`;
+			});
+		});
+		
         /**
          * Signal that the mod is ready for export.
          */
