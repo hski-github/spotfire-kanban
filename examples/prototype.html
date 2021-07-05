@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Insert title here</title>
+	<style>
+	table {
+		border-collapse: collapse;
+		table-layout: fixed;
+		width: 100%;
+	}
+	td{	  
+		text-align: center;
+		border: 1px solid white;
+		vertical-align: top;
+	}
+	th {	  
+		text-align: center;
+		border-left: 1px solid lightgrey; 
+		border-right: 1px solid lightgrey; 
+	}
+	div {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin: 1px;
+		padding: 2px 5px;
+	}
+	.green{background-color: lightgreen;}
+	.orange{background-color: orange;}
+	.pink{background-color: pink;}
+	.blue{background-color: lightblue;}
+	</style>
+</head>
+<body>
+<p>Layout using table cells in Kanban style</p>
+<table>
+	<thead>
+		<tr>
+			<th colspan=3>EU</th>
+			<th colspan=2>NA</th>
+		</tr>
+		<tr>
+			<th>DE</th>
+			<th>CH</th>
+			<th>AU</th>
+			<th>US</th>
+			<th>CA</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="green">A1</td>
+			<td class="pink">C1</td>
+			<td class="blue">D1</td>
+			<td class="blue">D3</td>
+			<td class="pink">C3</td>
+		</tr>
+		<tr>
+			<td class="green">A2</td>
+			<td class="green">A8</td>
+			<td class="blue">D2</td>
+			<td></td>
+			<td class="green">A7</td>
+		</tr>
+		<tr>
+			<td class="orange">B1</td>
+			<td class="pink">C2</td>
+			<td></td>
+			<td></td>
+			<td class="green">A6</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="green">A9</td>
+			<td></td>
+			<td></td>
+			<td class="green">A5</td>
+		</tr>
+	</tbody>
+</table>
+<br/>
+<br/>
+<br/>
+<p>Layout using table and div</p>
+<table>
+	<thead>
+		<tr>
+			<td colspan=3>
+				<div>Europa</div>
+				<svg width=100% height=2em>
+					<line x1="16.5%" y1="1em" x2="16.5%" y2="2em" style="stroke:black; stroke-width:1" />
+					<line x1="50%" y1="1em" x2="50%" y2="2em" style="stroke:black; stroke-width:1" />
+					<line x1="83.5%" y1="1em" x2="83.5%" y2="2em" style="stroke:black; stroke-width:1" />
+					<line x1="50%" y1="0em" x2="50%" y2="1em" style="stroke:black; stroke-width:1" />
+					<line x1="16.5%" y1="1em" x2="83.5%" y2="1em" style="stroke:black; stroke-width:1" />
+				</svg>
+			</td>
+			<td colspan=2>
+				<div>Nordamerika</div>
+				<svg width=100% height=2em>
+					<line x1="25%" y1="1em" x2="25%" y2="2em" style="stroke:black; stroke-width:1" />
+					<line x1="75%" y1="1em" x2="75%" y2="2em" style="stroke:black; stroke-width:1" />
+					<line x1="50%" y1="0em" x2="50%" y2="1em" style="stroke:black; stroke-width:1" />
+					<line x1="25%" y1="1em" x2="75%" y2="1em" style="stroke:black; stroke-width:1" />
+				</svg>
+			</td>
+		</tr>
+		<tr>
+			<td>Deutschland</td>
+			<td>Schweiz</td>
+			<td>Östereich</td>
+			<td>Vereinigte Staaten</td>
+			<td>Kanada</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<div class="orange">B1</div>
+				<div class="green">A2</div>
+				<div class="green">A1</div>
+			</td>
+			<td>
+				<div class="green">A12345678901234567890</div>
+				<div class="pink">C2</div>
+				<div class="green">A8</div>
+				<div class="pink">C1</div>
+			</td>
+			<td>
+				<div class="blue">D2</div>
+				<div class="blue">D1</div>
+			</td>
+			<td>
+				<div class="blue">D3</div>
+			</td>
+			<td>
+				<div class="green">A5</div>
+				<div class="green">A6</div>
+				<div class="green">A7</div>
+				<div class="pink">C3</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
