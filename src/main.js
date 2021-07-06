@@ -79,7 +79,9 @@ Spotfire.initialize(async (mod) => {
 			child.rows().forEach(function(row){
 				var div = document.createElement("div");
 				div.innerHTML = row.categorical("Tile").formattedValue();
-				div.setAttribute("style", "background-color: " + row.color().hexCode + ";");
+				div.setAttribute("style", 
+					"background-color: " + row.color().hexCode + "; " + 
+					"color: " + getContrastYIQ(row.color().hexCode) + "; ");
 				tdbody.appendChild(div);
 			});
 		});
@@ -94,3 +96,18 @@ Spotfire.initialize(async (mod) => {
         context.signalRenderComplete();
     }
 });
+
+
+/**
+ * Define text color black or white based on background color
+ */
+function getContrastYIQ(hexcolor){
+	
+	// See https://stackoverflow.com/questions/11867545
+    hexcolor = hexcolor.replace("#", "");
+    var r = parseInt(hexcolor.substr(0,2),16);
+    var g = parseInt(hexcolor.substr(2,2),16);
+    var b = parseInt(hexcolor.substr(4,2),16);
+    var yiq = ((r*299)+(g*587)+(b*114))/1000;
+    return (yiq >= 180) ? 'black' : 'white';
+}
