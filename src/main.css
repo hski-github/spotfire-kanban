@@ -12,3 +12,23 @@ body{
 #mod-container {
     white-space: pre;
 }
+
+#mod-kanban {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;	
+}
+
+div {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 1px;
+	padding: 2px 5px;
+}
+
+td, th {	  
+	text-align: center;
+	border: 1px solid white;
+	vertical-align: top;
+}
