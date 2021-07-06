@@ -70,6 +70,7 @@ Spotfire.initialize(async (mod) => {
 			child.rows().forEach(function(row, j){
 				var div = document.createElement("div");
 				div.innerHTML = row.categorical("Tile").formattedValue();
+				div.setAttribute("style", "background-color: " + row.color().hexCode + ";");
 				tdbody.appendChild(div);
 			});
 		});
