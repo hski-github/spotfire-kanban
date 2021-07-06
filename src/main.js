@@ -50,21 +50,35 @@ Spotfire.initialize(async (mod) => {
         }
 
         /**
-         * Print out to document
+         * Render Kanban
          */
-        const container = document.querySelector("#mod-container");
-        container.textContent = `windowSize: ${windowSize.width}x${windowSize.height}\r\n`;
-        container.textContent += `number of column levels: ${colHierarchy.levels.length} level(s)\r\n`;
-        container.textContent += `number of children of root: ${colRoot.children.length} child(ren)\r\n`;
-        container.textContent += `number of leaves of root: ${colRoot.leaves().length} leave(s)\r\n`;
-        container.textContent += `should render: ${colRoot.rows().length} rows\r\n`;
-
-		colRoot.children.forEach(function(childnode, i){
-	        container.textContent += childnode.formattedValue() + ' with ' + childnode.leafCount() + ` leaves and ` + childnode.rowCount() + ` rows\r\n`;
-			childnode.rows().forEach(function(row, j){
-				container.textContent += row.categorical("Tile").formattedValue() + `\r\n`;
+		document.querySelector("#mod-kanban-head").innerHTML = '';
+		document.querySelector("#mod-kanban-body").innerHTML = '';
+		
+		var tr = document.createElement("tr");
+		var trbody = document.createElement("tr");
+		colRoot.children.forEach(function(child, i){
+			var th = document.createElement("th");
+			th.innerHTML = child.formattedValue();
+			th.setAttribute("key", child.key);
+			tr.appendChild(th);
+			
+			var tdbody = document.createElement("td");
+			tdbody.setAttribute("key", child.key);
+			trbody.appendChild(tdbody);
+			
+			child.rows().forEach(function(row, j){
+				var div = document.createElement("div");
+				div.innerHTML = row.categorical("Tile").formattedValue();
+				tdbody.appendChild(div);
 			});
 		});
+		document.querySelector("#mod-kanban-head").appendChild(tr);
+		document.querySelector("#mod-kanban-head").appendChild(trbody);
+		
+		
+		
+		
 		
         /**
          * Signal that the mod is ready for export.
