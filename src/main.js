@@ -61,7 +61,9 @@ Spotfire.initialize(async (mod) => {
 		
 		var tr = document.createElement("tr");
 		var trbody = document.createElement("tr");
-		colRoot.children.forEach(function(child, i){
+		
+		colRoot.children.forEach(function(child){
+			
 			// Render Column Header
 			var th = document.createElement("th");
 			th.innerHTML = child.formattedValue();
@@ -74,7 +76,7 @@ Spotfire.initialize(async (mod) => {
 			trbody.appendChild(tdbody);
 			
 			// Render Cards of the Column
-			child.rows().forEach(function(row, j){
+			child.rows().forEach(function(row){
 				var div = document.createElement("div");
 				div.innerHTML = row.categorical("Tile").formattedValue();
 				div.setAttribute("style", "background-color: " + row.color().hexCode + ";");
