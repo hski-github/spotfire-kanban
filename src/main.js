@@ -24,6 +24,8 @@ Spotfire.initialize(async (mod) => {
      * @param {Spotfire.ModProperty<string>} prop
      */
     async function render(dataView, windowSize) {
+	
+	
         /**
          * Check the data view for errors
          */
@@ -37,6 +39,7 @@ Spotfire.initialize(async (mod) => {
         }
         mod.controls.errorOverlay.hide();
 
+
         /**
          * Get the hierarchy of the categorical X-axis.
          */
@@ -49,6 +52,7 @@ Spotfire.initialize(async (mod) => {
             return;
         }
 
+
         /**
          * Render Kanban
          */
@@ -58,15 +62,18 @@ Spotfire.initialize(async (mod) => {
 		var tr = document.createElement("tr");
 		var trbody = document.createElement("tr");
 		colRoot.children.forEach(function(child, i){
+			// Render Column Header
 			var th = document.createElement("th");
 			th.innerHTML = child.formattedValue();
 			th.setAttribute("key", child.key);
 			tr.appendChild(th);
 			
+			// Render Column
 			var tdbody = document.createElement("td");
 			tdbody.setAttribute("key", child.key);
 			trbody.appendChild(tdbody);
 			
+			// Render Cards of the Column
 			child.rows().forEach(function(row, j){
 				var div = document.createElement("div");
 				div.innerHTML = row.categorical("Tile").formattedValue();
@@ -74,11 +81,9 @@ Spotfire.initialize(async (mod) => {
 				tdbody.appendChild(div);
 			});
 		});
+		
 		document.querySelector("#mod-kanban-head").appendChild(tr);
 		document.querySelector("#mod-kanban-head").appendChild(trbody);
-		
-		
-		
 		
 		
         /**
