@@ -6,7 +6,12 @@ Spotfire.initialize(async (mod) => {
     /**
      * Create the read function.
      */
-    const reader = mod.createReader(mod.visualization.data(), mod.windowSize());
+    const reader = mod.createReader(
+		mod.visualization.data(), 
+		mod.windowSize(),
+		mod.visualization.axis("Column"),
+		mod.visualization.axis("Tile")
+	);
 
     /**
      * Store the context.
@@ -23,7 +28,7 @@ Spotfire.initialize(async (mod) => {
      * @param {Spotfire.Size} windowSize
      * @param {Spotfire.ModProperty<string>} prop
      */
-    async function render(dataView, windowSize) {
+    async function render(dataView, windowSize, columnAxis, tileAxis) {
 	
 	
         /**
@@ -54,6 +59,17 @@ Spotfire.initialize(async (mod) => {
 
 
         /**
+         * Get rows from dataView
+         */
+        const rows = await dataView.allRows();
+        if (rows == null) {
+            // User interaction caused the data view to expire.
+            // Don't clear the mod content here to avoid flickering.
+            return;
+        }
+
+
+        /**
          * Render Kanban
          */
 		document.querySelector("#mod-kanban-head").innerHTML = '';
@@ -76,13 +92,52 @@ Spotfire.initialize(async (mod) => {
 			trbody.appendChild(tdbody);
 			
 			// Render Cards of the Column
-			child.rows().forEach(function(row){
+			child.rows().forEach(function(row, j){
+				
 				var div = document.createElement("div");
 				div.innerHTML = row.categorical("Tile").formattedValue();
+				div.setAttribute("row", row.elementId());
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
 					"color: " + getContrastYIQ(row.color().hexCode) + "; ");
 				tdbody.appendChild(div);
+				
+				// Marking
+				div.onclick = function ( event ){
+
+					var elementId = event.target.getAttribute("row");
+					var row = rows.find( obj => { return obj.elementId() === elementId });
+
+					if (event.shiftKey) {
+						dataView.mark(new Array(row),"Add");
+					}
+					else {
+						dataView.mark(new Array(row),"Replace");
+					}
+				};
+
+				// Tool Tip
+				div.onmouseover = function (event){
+
+					var elementId = event.target.getAttribute("row");
+					var row = rows.find( obj => { return obj.elementId() === elementId });
+					
+					var tooltip = "";
+					var tileValue = row.categorical("Tile").value();
+					for(var i = 0; i < tileValue.length; i++){
+						tooltip += tileAxis.parts[i].displayName + ": " + tileValue[i].formattedValue() + "\r\n";
+					}
+					var columnValue = row.categorical("Column").value();
+					for(var i = 0; i < columnValue.length; i++){
+						tooltip += columnAxis.parts[i].displayName + ": " + columnValue[i].formattedValue() + "\r\n";
+					}
+					
+                    mod.controls.tooltip.show(tooltip);
+				};
+				div.onmouseout = function (event){
+                    mod.controls.tooltip.hide();
+				}					
+				
 			});
 		});
 		
