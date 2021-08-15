@@ -2,6 +2,12 @@
 
 Spotfire mods visualisation for Kanban board in Spotfire.
 
+## To Do's
+
+- Click on header to mark cards in column
+- Click on empty space to clear marking
+- text-overflow: ellipsis; for header label
+- Add configure button for order of columns and default columns
 
 ## How to get started (with development server)
 All source code for the mod example can be found in the `src` folder. 
