@@ -8,6 +8,7 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 - Click on header to mark cards in column
 - Click on empty space to clear marking
 - text-overflow: ellipsis; for header label
+- Ellipsis or linebreak as an option to configure
 - Add configure button for order of columns and default columns
 - Use https://popper.js.org for configure dialog
 - Render multiple attributes in multiple rows on card (like in tool tip) 
