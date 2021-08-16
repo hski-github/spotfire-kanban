@@ -10,7 +10,7 @@ Spotfire.initialize(async (mod) => {
 		mod.visualization.data(), 
 		mod.windowSize(),
 		mod.visualization.axis("Column"),
-		mod.visualization.axis("Tile")
+		mod.visualization.axis("Card")
 	);
 
     /**
@@ -28,7 +28,7 @@ Spotfire.initialize(async (mod) => {
      * @param {Spotfire.Size} windowSize
      * @param {Spotfire.ModProperty<string>} prop
      */
-    async function render(dataView, windowSize, columnAxis, tileAxis) {
+    async function render(dataView, windowSize, columnAxis, cardAxis) {
 	
 	
         /**
@@ -95,7 +95,7 @@ Spotfire.initialize(async (mod) => {
 			child.rows().forEach(function(row, j){
 				
 				var div = document.createElement("div");
-				div.innerHTML = row.categorical("Tile").formattedValue();
+				div.innerHTML = row.categorical("Card").formattedValue();
 				div.setAttribute("row", row.elementId());
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
@@ -123,9 +123,9 @@ Spotfire.initialize(async (mod) => {
 					var row = rows.find( obj => { return obj.elementId() === elementId });
 					
 					var tooltip = "";
-					var tileValue = row.categorical("Tile").value();
-					for(var i = 0; i < tileValue.length; i++){
-						tooltip += tileAxis.parts[i].displayName + ": " + tileValue[i].formattedValue() + "\r\n";
+					var cardValue = row.categorical("Card").value();
+					for(var i = 0; i < cardValue.length; i++){
+						tooltip += cardAxis.parts[i].displayName + ": " + cardValue[i].formattedValue() + "\r\n";
 					}
 					var columnValue = row.categorical("Column").value();
 					for(var i = 0; i < columnValue.length; i++){
