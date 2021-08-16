@@ -11,10 +11,9 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 - Ellipsis or linebreak as an option to configure
 - Add configure button for order of columns and default columns
 - Use https://popper.js.org for configure dialog
-- Render multiple attributes in multiple rows on card (like in tool tip) 
 - Render hierarchy with tree for headers using SVG like in prototype 
 - Sort cards alphabetically per column
-- Render column header value first in tool tip
+- Catch error if no column or card is defined by user
 
 ## How to get started (with development server)
 All source code for the mod example can be found in the `src` folder. 
