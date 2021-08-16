@@ -33,3 +33,9 @@ td, th {
 	border: 1px solid white;
 	vertical-align: top;
 }
+
+th {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 2px;
+}
