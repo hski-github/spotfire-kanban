@@ -125,6 +125,7 @@ Spotfire.initialize(async (mod) => {
 					else {
 						dataView.mark(new Array(row),"Replace");
 					}
+					event.stopPropagation();
 				};
 
 				// Tool Tip
@@ -152,6 +153,11 @@ Spotfire.initialize(async (mod) => {
 			});
 		});
 		
+		// Clear marking
+		trbody.onclick = function ( event ) {
+             if (!event.shiftKey) dataView.clearMarking();
+        };
+
 		document.querySelector("#mod-kanban-head").appendChild(tr);
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 		
