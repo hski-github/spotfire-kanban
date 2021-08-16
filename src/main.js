@@ -123,13 +123,13 @@ Spotfire.initialize(async (mod) => {
 					var row = rows.find( obj => { return obj.elementId() === elementId });
 					
 					var tooltip = "";
-					var cardValue = row.categorical("Card").value();
-					for(var i = 0; i < cardValue.length; i++){
-						tooltip += cardAxis.parts[i].displayName + ": " + cardValue[i].formattedValue() + "\r\n";
-					}
 					var columnValue = row.categorical("Column").value();
 					for(var i = 0; i < columnValue.length; i++){
 						tooltip += columnAxis.parts[i].displayName + ": " + columnValue[i].formattedValue() + "\r\n";
+					}
+					var cardValue = row.categorical("Card").value();
+					for(var i = 0; i < cardValue.length; i++){
+						tooltip += cardAxis.parts[i].displayName + ": " + cardValue[i].formattedValue() + "\r\n";
 					}
 					
                     mod.controls.tooltip.show(tooltip);
