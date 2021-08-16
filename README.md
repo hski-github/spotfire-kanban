@@ -4,7 +4,6 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 
 ## To Do's
 
-- Click on empty space to clear marking
 - Click on header to mark cards in column
 - Sort cards alphabetically per column
 - Add configure button for order of columns and default columns
@@ -12,7 +11,7 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 - Render hierarchy with tree for headers using SVG like in prototype 
 - Catch error if no column or card is defined by user
 - New test data with more data and multiple colors per column
-- Ellipsis or linebreak as an option to configure
+- Ellipsis or line break as an option to configure
 
 ## How to get started (with development server)
 All source code for the mod example can be found in the `src` folder. 
