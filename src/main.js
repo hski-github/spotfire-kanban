@@ -95,7 +95,14 @@ Spotfire.initialize(async (mod) => {
 			child.rows().forEach(function(row, j){
 				
 				var div = document.createElement("div");
-				div.innerHTML = row.categorical("Card").formattedValue();
+				var cardValue = row.categorical("Card").value();
+				div.innerHTML = "";
+				for(var i = 0; i < cardValue.length; i++){
+					div.innerHTML += cardValue[i].formattedValue();
+					if (i < cardValue.length - 1){
+						div.innerHTML += "<br/>";	
+					}
+				}				
 				div.setAttribute("row", row.elementId());
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
