@@ -70,11 +70,15 @@ Spotfire.initialize(async (mod) => {
 
 
         /**
-         * Render Kanban
+         * Clear content
          */
 		document.querySelector("#mod-kanban-head").innerHTML = '';
 		document.querySelector("#mod-kanban-body").innerHTML = '';
 		
+
+        /**
+         * Render Kanban
+         */
 		var tr = document.createElement("tr");
 		var trbody = document.createElement("tr");
 		
@@ -149,7 +153,7 @@ Spotfire.initialize(async (mod) => {
 		});
 		
 		document.querySelector("#mod-kanban-head").appendChild(tr);
-		document.querySelector("#mod-kanban-head").appendChild(trbody);
+		document.querySelector("#mod-kanban-body").appendChild(trbody);
 		
 		
         /**
