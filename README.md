@@ -11,6 +11,8 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 - Catch error if no column or card is defined by user
 - New test data with more data and multiple colors per column
 - Ellipsis or line break as an option to configure
+- Use of symbol axis (if possible for mods) for icons on card
+- ability to define max number of cards per column as column capacity as part of configuration 
 
 ## How to get started (with development server)
 All source code for the mod example can be found in the `src` folder. 
