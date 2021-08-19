@@ -90,6 +90,30 @@ Spotfire.initialize(async (mod) => {
 			th.setAttribute("key", child.key);
 			tr.appendChild(th);
 			
+			// Marking of all Cards of a Column onclick of Column Header
+			tr.onclick = function ( event ) {
+	            
+				if (!event.shiftKey) dataView.clearMarking();
+				
+				var columnKey = event.target.getAttribute("key");
+				var divs = document.querySelectorAll("#mod-kanban-body td[key="+columnKey+"] div");
+				
+				// For each card set marking
+				divs.forEach(function(div, j){
+					var elementId = div.getAttribute("row");	
+					var row = rows.find( obj => { return obj.elementId() === elementId });
+	
+					if (event.shiftKey) {
+						dataView.mark(new Array(row),"Add");
+					}
+					else {
+						dataView.mark(new Array(row),"Replace");
+					}
+				});
+				event.stopPropagation();
+			
+	        };
+
 			// Render Column
 			var tdbody = document.createElement("td");
 			tdbody.setAttribute("key", child.key);

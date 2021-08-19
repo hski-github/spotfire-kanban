@@ -4,10 +4,9 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 
 ## To Do's
 
-- Click on header to mark cards in column
-- Sort cards alphabetically per column
-- Add configure button for order of columns and default columns
 - Use https://popper.js.org for configure dialog
+- Add configure button for order of columns and default columns
+- Sort cards alphabetically per column
 - Render hierarchy with tree for headers using SVG like in prototype 
 - Catch error if no column or card is defined by user
 - New test data with more data and multiple colors per column
