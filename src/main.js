@@ -132,6 +132,7 @@ Spotfire.initialize(async (mod) => {
 					}
 				}				
 				div.setAttribute("row", row.elementId());
+				div.className = "card";
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
 					"color: " + getContrastYIQ(row.color().hexCode) + "; ");

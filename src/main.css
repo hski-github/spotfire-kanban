@@ -1,9 +1,3 @@
-/*
-* Copyright © 2020. TIBCO Software Inc.
-* This file is subject to the license terms contained
-* in the license file that is distributed with this file.
-*/
-
 body{
     margin: 0;
     overflow: hidden;
@@ -20,15 +14,6 @@ body{
 	user-select: none;
 }
 
-div {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	border: 1px solid white;
-	margin: 1px;
-	padding: 2px 5px;
-}
-
 td, th {	  
 	text-align: center;
 	border: 1px solid white;
@@ -39,9 +24,19 @@ th {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	padding: 2px;
+	cursor: pointer;
 }
 
-div:hover {
+.card {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border: 1px solid white;
+	margin: 1px;
+	padding: 2px 5px;
+}
+
+.card:hover {
 	border: 1px solid white;
 	outline: 1px solid black;
 }
