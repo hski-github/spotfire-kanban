@@ -36,6 +36,9 @@
     "files": [
         "index.html",
         "main.css",
-        "main.js"
+        "main.js",
+        "popper-2.9.3.min.js",
+        "tippy-bundle-6.3.1.umd.min.js",
+        "light-border-6.3.2.css"
     ]
 }

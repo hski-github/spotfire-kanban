@@ -77,6 +77,14 @@ Spotfire.initialize(async (mod) => {
 		
 
         /**
+         * Setup configure pop up
+         */
+		tippy('#mod-configure', {
+			content: 'My <b>tooltip</b>!', trigger: 'click', theme: 'light-border', allowHTML: true,
+		});
+	
+	
+        /**
          * Render Kanban
          */
 		var tr = document.createElement("tr");

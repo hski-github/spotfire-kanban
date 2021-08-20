@@ -6,13 +6,17 @@
         <title>Spotfire Kanban Board Visualization</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" type="text/css" media="all" href="main.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="light-border-6.3.2.css" />
     </head>
     <body>
+    	<button id="mod-configure">Configure</button>
         <table id="mod-kanban">
         	<thead id="mod-kanban-head"></thead>
         	<tbody id="mod-kanban-body"></tbody>
         </table>
         <script id="spotfire-loader">var Spotfire=function(e){"use strict";return e.initialize=function(e){var t="sfTemp"+1e4*Math.random()+"Cb",r=window;r[t]=e;var a={subject:"GetUrl",callbackId:-1,options:{cbId:t}};r.addEventListener("message",(function e(t){if(t.source!==r.parent||!t.data.src)return;r.removeEventListener("message",e);var a=document,n=a.createElement("script");n.src=t.data.src,(a.head||a.body).appendChild(n)})),r.parent.postMessage(a,"*")},e}({});</script>
+        <script src="popper-2.9.3.min.js"></script>
+        <script src="tippy-bundle-6.3.1.umd.min.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
