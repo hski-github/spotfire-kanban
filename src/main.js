@@ -79,8 +79,11 @@ Spotfire.initialize(async (mod) => {
         /**
          * Setup configure pop up
          */
+		const configureContent = document.getElementById('mod-configure-content');
 		tippy('#mod-configure', {
-			content: 'My <b>tooltip</b>!', trigger: 'click', theme: 'light-border', allowHTML: true,
+			trigger: 'click', theme: 'light-border', 
+			allowHTML: true, interactive: true,
+			content: configureContent
 		});
 	
 	
