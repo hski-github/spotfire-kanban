@@ -10,7 +10,8 @@ Spotfire.initialize(async (mod) => {
 		mod.visualization.data(), 
 		mod.windowSize(),
 		mod.visualization.axis("Column"),
-		mod.visualization.axis("Card")
+		mod.visualization.axis("Card"), 
+		mod.property("myProperty")
 	);
 
     /**
@@ -28,7 +29,7 @@ Spotfire.initialize(async (mod) => {
      * @param {Spotfire.Size} windowSize
      * @param {Spotfire.ModProperty<string>} prop
      */
-    async function render(dataView, windowSize, columnAxis, cardAxis) {
+    async function render(dataView, windowSize, columnAxis, cardAxis, myProperty) {
 	
 	
         /**
@@ -79,11 +80,23 @@ Spotfire.initialize(async (mod) => {
         /**
          * Setup configure pop up
          */
-		const configureContent = document.getElementById('mod-configure-content');
+		//TODO placeholder for textarea
+		//TODO label for textarea "Default Columns, Capacity" 
+		var configTextarea = document.createElement("textarea");
+		configTextarea.setAttribute("rows", 8);
+		configTextarea.setAttribute("cols", 30);
+		configTextarea.append(myProperty.value());
+		configTextarea.addEventListener("change", e => {	
+			myProperty.set(configTextarea.value); 
+		});
+		
+		var configDiv = document.createElement("div");
+		configDiv.appendChild(configTextarea);
+		
 		tippy('#mod-configure', {
 			trigger: 'click', theme: 'light-border', 
 			allowHTML: true, interactive: true,
-			content: configureContent
+			content: configDiv
 		});
 	
 	

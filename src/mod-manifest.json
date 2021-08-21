@@ -4,6 +4,13 @@
     "name": "Kanban Board",
     "id": "spotfire-kanban-hski",
     "icon": "icon.svg",
+    "properties": [
+        {
+            "name": "myProperty",
+            "type": "string",
+            "defaultValue": "myValue"
+        }
+    ],
     "dataViewDefinition": {
         "colorAxis": {
             "mode": "dual",

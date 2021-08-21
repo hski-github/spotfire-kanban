@@ -20,7 +20,7 @@ body{
     padding: 0px 20px;
 }
 
-#mod-configure-content textarea{
+textarea{
 	resize: none;
 	border: 1px solid #c0c0c0;
     border-radius: 3px;
