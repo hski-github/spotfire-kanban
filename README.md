@@ -4,10 +4,9 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 
 ## To Do's
 
-- Use https://popper.js.org or https://atomiks.github.io/tippyjs for configure dialog
-- Add configure button for order of columns and default columns
 - Sort cards alphabetically per column
 - Render hierarchy with tree for headers using SVG like in prototype 
+- Add configure button for order of columns and default columns (using Tippy.js)
 - Catch error if no column or card is defined by user
 - New test data with more data and multiple colors per column
 - Ellipsis or line break as an option to configure
