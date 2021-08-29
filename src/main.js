@@ -110,12 +110,15 @@ Spotfire.initialize(async (mod) => {
 			
 			// Render Column Header
 			var th = document.createElement("th");
-			th.innerHTML = child.formattedValue();
 			th.setAttribute("key", child.key);
+			var span = document.createElement("span");
+			span.setAttribute("key", child.key);
+			span.innerHTML = child.formattedValue();
+			th.appendChild(span);
 			tr.appendChild(th);
 			
 			// Marking of all Cards of a Column onclick of Column Header
-			tr.onclick = function ( event ) {
+			span.onclick = function ( event ) {
 	            
 				if (!event.shiftKey) dataView.clearMarking();
 				
