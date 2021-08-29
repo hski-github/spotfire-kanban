@@ -76,29 +76,6 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-head").innerHTML = '';
 		document.querySelector("#mod-kanban-body").innerHTML = '';
 		
-
-        /**
-         * Setup configure pop up
-         */
-		//TODO placeholder for textarea
-		//TODO label for textarea "Default Columns, Capacity" 
-		var configTextarea = document.createElement("textarea");
-		configTextarea.setAttribute("rows", 8);
-		configTextarea.setAttribute("cols", 30);
-		configTextarea.append(myProperty.value());
-		configTextarea.addEventListener("change", e => {	
-			myProperty.set(configTextarea.value); 
-		});
-		
-		var configDiv = document.createElement("div");
-		configDiv.appendChild(configTextarea);
-		
-		tippy('#mod-configure', {
-			trigger: 'click', theme: 'light-border', 
-			allowHTML: true, interactive: true,
-			content: configDiv
-		});
-	
 	
         /**
          * Render Kanban
@@ -213,6 +190,36 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-head").appendChild(tr);
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 		
+		
+        /**
+         * Setup configure pop up
+         */
+		//TODO placeholder for textarea
+		//TODO label for textarea "Default Columns, Capacity" 
+		var configTextarea = document.createElement("textarea");
+		configTextarea.setAttribute("id", "mod-config-textarea");
+		configTextarea.append(myProperty.value());
+		configTextarea.addEventListener("change", e => {	
+			myProperty.set(configTextarea.value); 
+		});
+		
+		var configLabel = document.createElement("label");
+		configLabel.setAttribute("for","mod-config-textarea");
+		configLabel.innerHTML = "Default Columns and Sort Order";
+		var configDiv = document.createElement("div");
+		configDiv.appendChild(configLabel);
+		configDiv.appendChild(configTextarea);
+		
+		tippy('#mod-kanban-head', {
+			trigger: 'click', theme: 'light-border', 
+			hideOnClick: true,
+			allowHTML: true, interactive: true,
+			followCursor: 'initial',
+			maxWidth: 250,
+			offset: [10,10],
+			content: configDiv
+		});
+			
 		
         /**
          * Signal that the mod is ready for export.
