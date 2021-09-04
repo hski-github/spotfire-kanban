@@ -82,25 +82,58 @@ Spotfire.initialize(async (mod) => {
          */
 		var tr = document.createElement("tr");
 		var trbody = document.createElement("tr");
+		document.querySelector("#mod-kanban-head").appendChild(tr);
+		document.querySelector("#mod-kanban-body").appendChild(trbody);
+		
+
+		/**
+		 * Add Default Columns
+		 */
+		var defaultCols = myProperty.value().split(/\r?\n/g);
+		defaultCols.forEach( function(defaultCol ){
+			defaultCol = defaultCol .trim(); 
+			if ( defaultCol ){
+				var th = document.createElement("th");
+				th.setAttribute("formattedvalue", defaultCol);
+				var span = document.createElement("span");
+				span.innerHTML = defaultCol;
+				th.appendChild(span);
+				tr.appendChild(th);
+				
+				var tdbody = document.createElement("td");
+				tdbody.setAttribute("formattedvalue", defaultCol);
+				trbody.appendChild(tdbody);
+
+			}
+		})
+	
+	
 		
 		colRoot.children.forEach(function(child){
 			
 			// Render Column Header
-			var th = document.createElement("th");
+			var th = document.querySelector("th[formattedvalue='"+child.formattedValue()+"']");
+			if (!th){
+				var th = document.createElement("th");
+				th.setAttribute("formattedvalue", child.formattedValue());
+				var span = document.createElement("span");
+				span.innerHTML = child.formattedValue();
+				th.appendChild(span);
+				tr.appendChild(th);
+
+			};
 			th.setAttribute("key", child.key);
-			var span = document.createElement("span");
-			span.setAttribute("key", child.key);
-			span.innerHTML = child.formattedValue();
-			th.appendChild(span);
-			tr.appendChild(th);
+			
 			
 			// Marking of all Cards of a Column onclick of Column Header
+			var span = document.querySelector("th[formattedvalue='"+child.formattedValue()+"'] span");
+			span.setAttribute("key", child.key);
 			span.onclick = function ( event ) {
 	            
 				if (!event.shiftKey) dataView.clearMarking();
 				
 				var columnKey = event.target.getAttribute("key");
-				var divs = document.querySelectorAll("#mod-kanban-body td[key="+columnKey+"] div");
+				var divs = document.querySelectorAll("#mod-kanban-body td[key='"+columnKey+"'] div");
 				
 				// For each card set marking
 				divs.forEach(function(div, j){
@@ -114,14 +147,22 @@ Spotfire.initialize(async (mod) => {
 						dataView.mark(new Array(row),"Replace");
 					}
 				});
+				tippy.hideAll();
 				event.stopPropagation();
 			
 	        };
 
+			
+/** 
+*/
+
 			// Render Column
-			var tdbody = document.createElement("td");
+			var tdbody = document.querySelector("#mod-kanban-body td[formattedvalue='"+child.formattedValue()+"']");
+			if (!tdbody){
+				var tdbody = document.createElement("td");
+				trbody.appendChild(tdbody);
+			};
 			tdbody.setAttribute("key", child.key);
-			trbody.appendChild(tdbody);
 			
 			// Render Cards of the Column
 			child.rows().forEach(function(row, j){
@@ -187,15 +228,12 @@ Spotfire.initialize(async (mod) => {
              if (!event.shiftKey) dataView.clearMarking();
         };
 
-		document.querySelector("#mod-kanban-head").appendChild(tr);
-		document.querySelector("#mod-kanban-body").appendChild(trbody);
+
 		
 		
         /**
          * Setup configure pop up
          */
-		//TODO placeholder for textarea
-		//TODO label for textarea "Default Columns, Capacity" 
 		var configTextarea = document.createElement("textarea");
 		configTextarea.setAttribute("id", "mod-config-textarea");
 		configTextarea.append(myProperty.value());
@@ -205,7 +243,7 @@ Spotfire.initialize(async (mod) => {
 		
 		var configLabel = document.createElement("label");
 		configLabel.setAttribute("for","mod-config-textarea");
-		configLabel.innerHTML = "Default Columns and Sort Order";
+		configLabel.innerHTML = "Default Values and Sort Order";
 		var configDiv = document.createElement("div");
 		configDiv.appendChild(configLabel);
 		configDiv.appendChild(configTextarea);
