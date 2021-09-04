@@ -130,6 +130,8 @@ Spotfire.initialize(async (mod) => {
 			span.setAttribute("key", child.key);
 			span.onclick = function ( event ) {
 	            
+				tippy.hideAll();
+				
 				if (!event.shiftKey) dataView.clearMarking();
 				
 				var columnKey = event.target.getAttribute("key");
@@ -147,7 +149,6 @@ Spotfire.initialize(async (mod) => {
 						dataView.mark(new Array(row),"Replace");
 					}
 				});
-				tippy.hideAll();
 				event.stopPropagation();
 			
 	        };
@@ -245,6 +246,7 @@ Spotfire.initialize(async (mod) => {
 		configLabel.setAttribute("for","mod-config-textarea");
 		configLabel.innerHTML = "Default Values and Sort Order";
 		var configDiv = document.createElement("div");
+		configDiv.setAttribute("id", "mod-kanban-config");
 		configDiv.appendChild(configLabel);
 		configDiv.appendChild(configTextarea);
 		
