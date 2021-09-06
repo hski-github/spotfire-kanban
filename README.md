@@ -1,6 +1,21 @@
-# Spotfire Kanban Board Visualisation
+# Kanban Board Mod for TIBCO Spotfire
 
-Spotfire mods visualisation for Kanban board in Spotfire.
+Visualize tasks or items in different stages or categories.
+
+Kanban boards visually depict work at various stages of a process using cards to represent work items and columns to represent each stage of a process. 
+
+As a basic example you can have three columns "to do", "doing" and "done" and the list of tasks in respective column according to their current status. You could also use a Kanban-like board to plan activities and have columns for upcoming sprints or quarters with activities planned for that columns.
+
+
+
+## Limitations  
+
+The following features of a Kanban Board are currently not supported by Kanban Board Mod for TIBCO Spotfire, but might be implemented in a future release 
+
+- Ability to define max number of cards per column as column capacity. In a more advanced Kanban board you could have limits for "Work in Progress", that means get a visual warning if a certain column contains more items that a defined maximum. 
+- Support for swim lanes in Kanban board. An advance Kanban board could have swimlanes for different topics, teams or categories of items.
+- Support for stickers or icons on cards. Some Kanban Boards make use of stickers on the cards to indicate certain situations of a task or item like existing impediment, complexity or priority.
+
 
 ## To Do's
 
@@ -8,11 +23,8 @@ Spotfire mods visualisation for Kanban board in Spotfire.
 - Render hierarchy with tree for headers using SVG like in prototype 
 - Add configure button for order of columns and default columns (using Tippy.js)
 - Catch error if no column or card is defined by user
-- New test data with more data and multiple colors per column
 - Ellipsis or line break as an option to configure
-- Use of symbol axis (if possible for mods) for icons on card
-- Ability to define max number of cards per column as column capacity as part of configuration 
-- Support for swim lanes in Kanban board
+
 
 ## How to get started (with development server)
 All source code for the mod example can be found in the `src` folder. 
