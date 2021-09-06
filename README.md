@@ -13,7 +13,7 @@ As a basic example you can have three columns "to do", "doing" and "done" and th
 The following features of a Kanban Board are currently not supported by Kanban Board Mod for TIBCO Spotfire, but might be implemented in a future release 
 
 - Ability to define max number of cards per column as column capacity. In a more advanced Kanban board you could have limits for "Work in Progress", that means get a visual warning if a certain column contains more items that a defined maximum. 
-- Support for swim lanes in Kanban board. An advance Kanban board could have swimlanes for different topics, teams or categories of items.
+- Support for swimlanes in Kanban board. An advance Kanban board could have swimlanes for different topics, teams or categories of items.
 - Support for stickers or icons on cards. Some Kanban Boards make use of stickers on the cards to indicate certain situations of a task or item like existing impediment, complexity or priority.
 
 
