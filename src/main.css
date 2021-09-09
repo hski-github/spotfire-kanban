@@ -12,6 +12,7 @@ body{
 	table-layout: fixed;
 	width: 100%;	
 	user-select: none;
+	margin-top: 6px;
 }
 
 td, th {	  
