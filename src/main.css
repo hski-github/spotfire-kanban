@@ -3,10 +3,6 @@ body{
     overflow: hidden;
 }
 
-#mod-container {
-    white-space: pre;
-}
-
 #mod-kanban {
 	border-collapse: collapse;
 	table-layout: fixed;
