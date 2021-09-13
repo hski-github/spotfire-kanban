@@ -8,7 +8,7 @@ As a basic example you can have three columns "to do", "doing" and "done" and th
 
 <img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/kanban-taskboard.png?raw=true" width="70%">
 
-But the Kanban Board visualisation can also be used to group items in column as information.
+But the Kanban Board visualisation can also be used to simply group items in columns.
 
 <img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/item-board.png?raw=true" width="70%">
 
