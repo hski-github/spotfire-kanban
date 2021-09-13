@@ -7,6 +7,12 @@ Kanban boards visually depict work at various stages of a process using cards to
 As a basic example you can have three columns "to do", "doing" and "done" and the list of tasks in respective column according to their current status. You could also use a Kanban-like board to plan activities and have columns for upcoming sprints or quarters with activities planned for that columns.
 
 
+## To Do's
+
+- Render hierarchy with tree for headers using SVG like in prototype 
+- Catch error if no column or card is defined by user
+- Ellipsis or line break as an option to configure
+
 
 ## Limitations  
 
@@ -15,15 +21,6 @@ The following features of a Kanban Board are currently not supported by Kanban B
 - Ability to define max number of cards per column as column capacity. In a more advanced Kanban board you could have limits for "Work in Progress", that means get a visual warning if a certain column contains more items that a defined maximum. 
 - Support for swimlanes in Kanban board. An advance Kanban board could have swimlanes for different topics, teams or categories of items.
 - Support for stickers or icons on cards. Some Kanban Boards make use of stickers on the cards to indicate certain situations of a task or item like existing impediment, complexity or priority.
-
-
-## To Do's
-
-- Sort cards alphabetically per column
-- Render hierarchy with tree for headers using SVG like in prototype 
-- Add configure button for order of columns and default columns (using Tippy.js)
-- Catch error if no column or card is defined by user
-- Ellipsis or line break as an option to configure
 
 
 ## How to get started (with development server)
