@@ -79,19 +79,22 @@ Spotfire.initialize(async (mod) => {
         /**
          * Render Kanban
          */
-		var tr = document.createElement("tr");
+		var trhead = document.createElement("tr");
 		var trbody = document.createElement("tr");
-		
+		document.querySelector("#mod-kanban-head").appendChild(trhead);
+		document.querySelector("#mod-kanban-body").appendChild(trbody);
+
+		// Render Columns
 		colRoot.children.forEach(function(child){
 			
 			// Render Column Header
 			var th = document.createElement("th");
 			th.innerHTML = child.formattedValue();
 			th.setAttribute("key", child.key);
-			tr.appendChild(th);
+			trhead.appendChild(th);
 			
 			// Marking of all Cards of a Column onclick of Column Header
-			tr.onclick = function ( event ) {
+			trhead.onclick = function ( event ) {
 	            
 				if (!event.shiftKey) dataView.clearMarking();
 				
@@ -181,11 +184,7 @@ Spotfire.initialize(async (mod) => {
 		// Clear marking
 		trbody.onclick = function ( event ) {
              if (!event.shiftKey) dataView.clearMarking();
-        };
-
-		document.querySelector("#mod-kanban-head").appendChild(tr);
-		document.querySelector("#mod-kanban-body").appendChild(trbody);
-		
+        };		
 		
 		// Set card border and outline style dependent on mod theme styles
 		var style = document.querySelector("#mod-kanban-style");
