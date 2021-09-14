@@ -77,6 +77,13 @@ Spotfire.initialize(async (mod) => {
 		
 
         /**
+         * Set card border and outline style dependent on mod theme styles
+         */
+		var style = document.querySelector("#mod-kanban-style");
+		style.innerHTML = '.card {border: 1px solid white;} .card:hover {outline: 1px solid black;}';
+
+
+        /**
          * Render Kanban
          */
 		var trhead = document.createElement("tr");
@@ -84,6 +91,7 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-head").appendChild(trhead);
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 
+		
 		// Render Columns
 		colRoot.children.forEach(function(child){
 			
@@ -180,16 +188,15 @@ Spotfire.initialize(async (mod) => {
 				
 			});
 		});
-		
-		// Clear marking
+				
+
+        /**
+         * Clear marking
+         */
 		trbody.onclick = function ( event ) {
-             if (!event.shiftKey) dataView.clearMarking();
+			if (!event.shiftKey) dataView.clearMarking();
         };		
-		
-		// Set card border and outline style dependent on mod theme styles
-		var style = document.querySelector("#mod-kanban-style");
-		style.innerHTML = '.card {border: 1px solid white;} .card:hover {outline: 1px solid black;}';
-		
+
 
         /**
          * Signal that the mod is ready for export.
