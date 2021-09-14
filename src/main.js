@@ -187,6 +187,11 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 		
 		
+		// Set card border and outline style dependent on mod theme styles
+		var style = document.querySelector("#mod-kanban-style");
+		style.innerHTML = '.card {border: 1px solid white;} .card:hover {outline: 1px solid black;}';
+		
+
         /**
          * Signal that the mod is ready for export.
          */

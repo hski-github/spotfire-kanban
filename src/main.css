@@ -28,12 +28,6 @@ th {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	border: 1px solid white;
 	margin: 1px;
 	padding: 2px 5px;
-}
-
-.card:hover {
-	border: 1px solid white;
-	outline: 1px solid black;
 }
