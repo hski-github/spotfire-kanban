@@ -6,6 +6,12 @@ Kanban boards visually depict work at various stages of a process using cards to
 
 As a basic example you can have three columns "to do", "doing" and "done" and the list of tasks in respective column according to their current status. You could also use a Kanban-like board to plan activities and have columns for upcoming sprints or quarters with activities planned for that columns.
 
+<img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/kanban-taskboard.png?raw=true" width="70%">
+
+But the Kanban Board visualisation can also be used to simply group items in columns.
+
+<img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/item-board.png?raw=true" width="70%">
+
 
 ## To Do's
 
