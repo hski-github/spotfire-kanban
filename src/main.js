@@ -79,8 +79,11 @@ Spotfire.initialize(async (mod) => {
         /**
          * Set card border and outline style dependent on mod theme styles
          */
+		var fontColor = mod.getRenderContext().styling.general.font.color;
+		var backgroundColor = mod.getRenderContext().styling.general.backgroundColor;
 		var style = document.querySelector("#mod-kanban-style");
-		style.innerHTML = '.card {border: 1px solid white;} .card:hover {outline: 1px solid black;}';
+		style.innerHTML = '.card {border: 1px solid ' + backgroundColor + ';} ' + 
+			'.card:hover {outline: 1px solid ' + fontColor + ';}';
 
 
         /**
