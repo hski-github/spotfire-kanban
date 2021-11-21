@@ -20,6 +20,7 @@ But the Kanban Board visualisation can also be used to simply group items in col
 - Ellipsis or line break as an option to configure
 - Swimlanes
 - Font color
+- Hide or show empty columns
 
 
 ## Limitations  
