@@ -18,6 +18,8 @@ But the Kanban Board visualisation can also be used to simply group items in col
 - Render hierarchy with tree for headers using SVG like in prototype 
 - Catch error if no column or card is defined by user
 - Ellipsis or line break as an option to configure
+- Swimlanes
+- Font color
 
 
 ## Limitations  
