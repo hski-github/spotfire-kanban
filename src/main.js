@@ -25,9 +25,7 @@ Spotfire.initialize(async (mod) => {
     reader.subscribe(render);
 
     /**
-     * @param {Spotfire.DataView} dataView
-     * @param {Spotfire.Size} windowSize
-     * @param {Spotfire.ModProperty<string>} prop
+     * Render content of the data view and axis 
      */
     async function render(dataView, windowSize, columnAxis, cardAxis, iconAxis) {
 	
@@ -95,7 +93,7 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-head").appendChild(trhead);
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 
-		
+	    	
 		// Render Columns
 		colRoot.children.forEach(function(child){
 			
@@ -137,21 +135,36 @@ Spotfire.initialize(async (mod) => {
 			// Render Cards of the Column
 			child.rows().forEach(function(row, j){
 				
+				// Card
 				var div = document.createElement("div");
-				var cardValue = row.categorical("Card").value();
+				div.className = "card";
+				div.setAttribute("row", row.elementId());
 				div.innerHTML = "";
+				tdbody.appendChild(div);
+
+				// Text
+				var cardValue = row.categorical("Card").value();
 				for(var i = 0; i < cardValue.length; i++){
 					div.innerHTML += cardValue[i].formattedValue();
 					if (i < cardValue.length - 1){
 						div.innerHTML += "<br/>";	
 					}
-				}				
-				div.setAttribute("row", row.elementId());
-				div.className = "card";
+				}
+				
+				// Icon 
+				var icon = row.categorial("Icon").value();
+				var img = document.createElement("img");
+				img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+				img.setAttribute("width", "1em");
+				img.setAttribute("height", "1em");
+				img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
+				div.appendChild(img);
+				
+				// Color
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
 					"color: " + getContrastYIQ(row.color().hexCode) + "; ");
-				tdbody.appendChild(div);
+				
 				
 				// Marking
 				div.onclick = function ( event ){
