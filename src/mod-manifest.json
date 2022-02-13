@@ -1,6 +1,6 @@
 {
     "apiVersion": "1.1",
-    "version": "1.0",
+    "version": "1.1",
     "name": "Kanban Board",
     "id": "spotfire-kanban-hski",
     "icon": "icon.svg",
@@ -29,6 +29,15 @@
                 "dropTarget": {
                     "icon": "RowAxis",
                     "description": "Use {0} as text on card for Kanban board"
+                }
+            },
+            {
+                "name": "Icon",
+                "mode": "categorical",
+                "placement": "right",
+                "dropTarget": {
+                    "icon": "Icon",
+                    "description": "Use {0} to define icon on the card"
                 }
             }
         ]
