@@ -10,7 +10,8 @@ Spotfire.initialize(async (mod) => {
 		mod.visualization.data(), 
 		mod.windowSize(),
 		mod.visualization.axis("Column"),
-		mod.visualization.axis("Card")
+		mod.visualization.axis("Card"),
+		mod.visualization.axis("Icon")
 	);
 
     /**
@@ -28,7 +29,7 @@ Spotfire.initialize(async (mod) => {
      * @param {Spotfire.Size} windowSize
      * @param {Spotfire.ModProperty<string>} prop
      */
-    async function render(dataView, windowSize, columnAxis, cardAxis) {
+    async function render(dataView, windowSize, columnAxis, cardAxis, iconAxis) {
 	
 	
         /**
