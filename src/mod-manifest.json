@@ -45,6 +45,29 @@
     "files": [
         "index.html",
         "main.css",
-        "main.js"
+        "main.js",
+        "fontawesome/ambulance.svg",
+        "fontawesome/angle-double-right.svg",
+        "fontawesome/angle-right.svg",
+        "fontawesome/asterisk.svg",
+        "fontawesome/ban.svg", 
+        "fontawesome/bookmark.svg",
+        "fontawesome/bug.svg",
+        "fontawesome/bullhorn.svg",
+        "fontawesome/cog.svg",
+        "fontawesome/comments.svg",
+        "fontawesome/exclamation-triangle.svg",
+        "fontawesome/flag.svg",
+        "fontawesome/handshake.svg",
+        "fontawesome/lightbulb.svg",
+        "fontawesome/lock.svg",
+        "fontawesome/magic.svg",
+        "fontawesome/radiation.svg",
+        "fontawesome/redo.svg",
+        "fontawesome/star.svg",
+        "fontawesome/trophy.svg",
+        "fontawesome/umbrella.svg",
+        "fontawesome/user.svg",
+        "fontawesome/wrench.svg"
     ]
 }
