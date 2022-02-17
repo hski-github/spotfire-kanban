@@ -143,22 +143,26 @@ Spotfire.initialize(async (mod) => {
 				tdbody.appendChild(div);
 
 				// Text
-				var cardValue = row.categorical("Card").value();
-				for(var i = 0; i < cardValue.length; i++){
-					div.innerHTML += cardValue[i].formattedValue();
-					if (i < cardValue.length - 1){
-						div.innerHTML += "<br/>";	
+				if ( cardAxis.parts.length > 0 ){
+					var cardValue = row.categorical("Card").value();
+					for(var i = 0; i < cardValue.length; i++){
+						div.innerHTML += cardValue[i].formattedValue();
+						if (i < cardValue.length - 1){
+							div.innerHTML += "<br/>";	
+						}
 					}
 				}
 				
 				// Icon 
-				var icon = row.categorial("Icon").value();
-				var img = document.createElement("img");
-				img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
-				img.setAttribute("width", "1em");
-				img.setAttribute("height", "1em");
-				img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
-				div.appendChild(img);
+				if ( iconAxis.parts.length > 0 ){
+					var icon = row.categorical("Icon");
+					var img = document.createElement("img");
+					img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+					img.setAttribute("width", "18");
+					img.setAttribute("height", "18");
+					img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
+					div.appendChild(img);
+				}
 				
 				// Color
 				div.setAttribute("style", 
