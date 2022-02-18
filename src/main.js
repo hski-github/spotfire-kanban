@@ -142,6 +142,17 @@ Spotfire.initialize(async (mod) => {
 				div.innerHTML = "";
 				tdbody.appendChild(div);
 
+				// Icon 
+				if ( iconAxis.parts.length > 0 ){
+					var icon = row.categorical("Icon");
+					var img = document.createElement("img");
+					img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+					img.setAttribute("width", "16");
+					img.setAttribute("height", "16");
+					img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
+					div.appendChild(img);
+				}
+
 				// Text
 				if ( cardAxis.parts.length > 0 ){
 					var cardValue = row.categorical("Card").value();
@@ -152,18 +163,7 @@ Spotfire.initialize(async (mod) => {
 						}
 					}
 				}
-				
-				// Icon 
-				if ( iconAxis.parts.length > 0 ){
-					var icon = row.categorical("Icon");
-					var img = document.createElement("img");
-					img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
-					img.setAttribute("width", "18");
-					img.setAttribute("height", "18");
-					img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
-					div.appendChild(img);
-				}
-				
+								
 				// Color
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
