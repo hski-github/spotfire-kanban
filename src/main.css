@@ -31,3 +31,11 @@ th {
 	margin: 1px;
 	padding: 2px 5px;
 }
+
+.icon {
+	float: right;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	height: 16px;
+	width: 16px;
+}

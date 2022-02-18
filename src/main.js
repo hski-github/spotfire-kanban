@@ -146,10 +146,8 @@ Spotfire.initialize(async (mod) => {
 				if ( iconAxis.parts.length > 0 ){
 					var icon = row.categorical("Icon");
 					var img = document.createElement("img");
+					img.className = "icon";
 					img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
-					img.setAttribute("width", "16");
-					img.setAttribute("height", "16");
-					img.setAttribute("style", "float: right; margin-left: 3px; margin-bottom: 3px;");
 					div.appendChild(img);
 				}
 
