@@ -139,7 +139,6 @@ Spotfire.initialize(async (mod) => {
 				var div = document.createElement("div");
 				div.className = "card";
 				div.setAttribute("row", row.elementId());
-				div.innerHTML = "";
 				tdbody.appendChild(div);
 
 				// Icon 
