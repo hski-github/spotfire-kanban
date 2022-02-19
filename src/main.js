@@ -144,10 +144,16 @@ Spotfire.initialize(async (mod) => {
 				// Icon 
 				if ( iconAxis.parts.length > 0 ){
 					var icon = row.categorical("Icon");
-					var img = document.createElement("img");
-					img.className = "icon";
-					img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
-					div.appendChild(img);
+					var iconNotEmpty = false;
+					icon.value().forEach(function(part){
+						if ( part.value() ) iconNotEmpty = true;
+					});
+					if ( iconNotEmpty ){
+						var img = document.createElement("img");
+						img.className = "icon";
+						img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+						div.appendChild(img);
+					}
 				}
 
 				// Text
