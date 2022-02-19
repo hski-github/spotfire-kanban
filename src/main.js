@@ -152,6 +152,7 @@ Spotfire.initialize(async (mod) => {
 						var img = document.createElement("img");
 						img.className = "icon";
 						img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+						img.setAttribute("row", row.elementId());
 						div.appendChild(img);
 					}
 				}
