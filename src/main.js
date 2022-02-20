@@ -204,7 +204,12 @@ Spotfire.initialize(async (mod) => {
 					for(var i = 0; i < cardValue.length; i++){
 						tooltip += cardAxis.parts[i].displayName + ": " + cardValue[i].formattedValue() + "\r\n";
 					}
-					
+
+					if ( iconAxis.parts.length > 0 ){
+						var iconValue = row.categorical("Icon").formattedValue();
+						tooltip += "Icon: " + iconValue + "\r\n";
+					}
+
                     mod.controls.tooltip.show(tooltip);
 				};
 				div.onmouseout = function (event){
