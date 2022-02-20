@@ -18,6 +18,8 @@ But the Kanban Board visualisation can also be used to simply group items in col
 You can also add an icon to the cards to indicate certain situations of a task or item like existing impediment, complexity or priority.
 A certain list of icons is available. Add an attribute to the Icon axis, that contains the icon name as a string like flag, bookmark, bug, lock, ambulance. See supported icons [here](https://github.com/hski-github/spotfire-kanban/tree/main/src/fontawesome).
 
+<img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/kanban-taskboard-icon.png?raw=true" width="70%">
+
 
 ## To Do's
 
