@@ -13,18 +13,23 @@ But the Kanban Board visualisation can also be used to simply group items in col
 
 <img src="https://github.com/hski-github/spotfire-kanban/blob/main/examples/item-board.png?raw=true" width="70%">
 
+### New in version 1.1
+
 You can also add an icon to the cards to indicate certain situations of a task or item like existing impediment, complexity or priority.
-A ceratin list of icons is available.
+A certain list of icons is available. Add an attribute to the Icon axis, that contains the icon name as a string like flag, bookmark, bug, lock, ambulance. See supported icons [here](https://github.com/hski-github/spotfire-kanban/tree/main/src/fontawesome).
 
 
 ## To Do's
 
-- Render hierarchy with tree for headers using SVG like in prototype 
-- Catch error if no column or card is defined by user
-- Ellipsis or line break as an option to configure
+- Render hierarchy with tree as header 
 - Swimlanes
-- Font color
-- Hide or show empty columns
+- Font color from theme
+- Catch error if no column or card is defined by user
+- Option to show ellipsis or complete text 
+- Option to center or left align text on cards 
+- Option to hide or show empty columns
+
+
 
 
 ## Limitations  
