@@ -10,7 +10,8 @@ Spotfire.initialize(async (mod) => {
 		mod.visualization.data(), 
 		mod.windowSize(),
 		mod.visualization.axis("Column"),
-		mod.visualization.axis("Card")
+		mod.visualization.axis("Card"),
+		mod.visualization.axis("Icon")
 	);
 
     /**
@@ -24,11 +25,9 @@ Spotfire.initialize(async (mod) => {
     reader.subscribe(render);
 
     /**
-     * @param {Spotfire.DataView} dataView
-     * @param {Spotfire.Size} windowSize
-     * @param {Spotfire.ModProperty<string>} prop
+     * Render content of the data view and axis 
      */
-    async function render(dataView, windowSize, columnAxis, cardAxis) {
+    async function render(dataView, windowSize, columnAxis, cardAxis, iconAxis) {
 	
 	
         /**
@@ -94,7 +93,7 @@ Spotfire.initialize(async (mod) => {
 		document.querySelector("#mod-kanban-head").appendChild(trhead);
 		document.querySelector("#mod-kanban-body").appendChild(trbody);
 
-		
+	    	
 		// Render Columns
 		colRoot.children.forEach(function(child){
 			
@@ -136,21 +135,44 @@ Spotfire.initialize(async (mod) => {
 			// Render Cards of the Column
 			child.rows().forEach(function(row, j){
 				
+				// Card
 				var div = document.createElement("div");
-				var cardValue = row.categorical("Card").value();
-				div.innerHTML = "";
-				for(var i = 0; i < cardValue.length; i++){
-					div.innerHTML += cardValue[i].formattedValue();
-					if (i < cardValue.length - 1){
-						div.innerHTML += "<br/>";	
-					}
-				}				
-				div.setAttribute("row", row.elementId());
 				div.className = "card";
+				div.setAttribute("row", row.elementId());
+				tdbody.appendChild(div);
+
+				// Icon 
+				if ( iconAxis.parts.length > 0 ){
+					var icon = row.categorical("Icon");
+					var iconNotEmpty = false;
+					icon.value().forEach(function(part){
+						if ( part.value() ) iconNotEmpty = true;
+					});
+					if ( iconNotEmpty ){
+						var img = document.createElement("img");
+						img.className = "icon";
+						img.setAttribute("src", "fontawesome/" + icon.formattedValue() + ".svg");
+						img.setAttribute("row", row.elementId());
+						div.appendChild(img);
+					}
+				}
+
+				// Text
+				if ( cardAxis.parts.length > 0 ){
+					var cardValue = row.categorical("Card").value();
+					for(var i = 0; i < cardValue.length; i++){
+						div.innerHTML += cardValue[i].formattedValue();
+						if (i < cardValue.length - 1){
+							div.innerHTML += "<br/>";	
+						}
+					}
+				}
+								
+				// Color
 				div.setAttribute("style", 
 					"background-color: " + row.color().hexCode + "; " + 
 					"color: " + getContrastYIQ(row.color().hexCode) + "; ");
-				tdbody.appendChild(div);
+				
 				
 				// Marking
 				div.onclick = function ( event ){
@@ -182,7 +204,12 @@ Spotfire.initialize(async (mod) => {
 					for(var i = 0; i < cardValue.length; i++){
 						tooltip += cardAxis.parts[i].displayName + ": " + cardValue[i].formattedValue() + "\r\n";
 					}
-					
+
+					if ( iconAxis.parts.length > 0 ){
+						var iconValue = row.categorical("Icon").formattedValue();
+						tooltip += "Icon: " + iconValue + "\r\n";
+					}
+
                     mod.controls.tooltip.show(tooltip);
 				};
 				div.onmouseout = function (event){
@@ -220,5 +247,5 @@ function getContrastYIQ(hexcolor){
     var g = parseInt(hexcolor.substr(2,2),16);
     var b = parseInt(hexcolor.substr(4,2),16);
     var yiq = ((r*299)+(g*587)+(b*114))/1000;
-    return (yiq >= 180) ? 'black' : 'white';
+    return (yiq >= 180) ? '#61646B' : 'white';
 }
