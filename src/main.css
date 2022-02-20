@@ -37,4 +37,5 @@ th {
 	margin-left: 3px;
 	height: 15px;
 	width: 15px;
+	filter: contrast(0.4);
 }
